@@ -49,6 +49,30 @@ class MyTestCase(unittest.TestCase):
         actual = reading_from_file.read_curly_wrapped_list('test_inputs/curly_wrapped_list.txt')
         self.assertEqual(expected, actual)
 
+    def test_read_list_of_int_list(self):
+        expected = [
+            [123, 4132, 3241],
+            [123, 32, 5, 78, 32412, 3231412, 3],
+            [23, -24123, 312, 32413, 3132]
+        ]
+        actual = reading_from_file.read_list_of_int_list('test_inputs/list_of_int_lists.txt')
+        self.assertEqual(expected, actual)
+
+    def test_read_list_of_mixed_type(self):
+        expected = [12, "eleven", 10, "minus", "-ten", -20]
+        actual = reading_from_file.read_list_of_mixed_type('test_inputs/list_of_mixed_types.txt')
+        self.assertEqual(expected, actual)
+
+    def test_weirdly_formatted_dictionary(self):
+        expected = {
+            "key1": "value1",
+            "key2": "value2",
+            "key3": "value3",
+            "key4": "value4"
+        }
+        actual = reading_from_file.read_weirdly_formatted_dictionary('test_inputs/weirdly_formatted_dictionary.txt')
+        self.assertEqual(expected, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

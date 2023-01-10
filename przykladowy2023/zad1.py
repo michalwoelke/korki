@@ -55,7 +55,7 @@ def count_empty_columns(board: list):
 
 # === PODPUNKT 2
 def zad2(boards):
-    equilibrium_boards = 0
+    equal_boards = 0
     pieces_on_boards = []
     for board in boards:
         white_pieces = []
@@ -68,9 +68,9 @@ def zad2(boards):
                     else:
                         white_pieces.append(char)
         if sorted(white_pieces) == sorted(black_pieces):
-            equilibrium_boards += 1
+            equal_boards += 1
             pieces_on_boards.append(2*len(white_pieces))
-    print("zad 1.2: ", equilibrium_boards, min(pieces_on_boards))
+    print("zad 1.2: ", equal_boards, min(pieces_on_boards))
 
 
 if __name__ == '__main__':

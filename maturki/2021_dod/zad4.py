@@ -37,38 +37,51 @@ def zad3(arr):
 
 
 def zad4(arr: list):
-    pairs = []
-    pair = []
-    for line in arr:
-        line_numbers = []
-        for char in line:
-            if char.isnumeric():
-                line_numbers.append(char)
-        if len(line_numbers) % 2 != 0:
-            line_numbers = line_numbers[:-1]
-        for number in line_numbers:
-            if len(pair) == 0:
-                pair.append(number)
-            elif len(pair) == 1:
-                pair.append(number)
-                pairs.append(pair)
-                pair = []
+    pairs = get_all_number_pairs(arr)
+    nums = get_valid_ascii_nums(pairs)
+    result = ''
+    for x in nums:
+        result += chr(x)
+        # check for end (XXX)
+        if result[-3:] == 'XXX':
+            break
+    print(f'zad 4.4: {result}')
+
+
+def get_valid_ascii_nums(pairs):
     nums = []
     for n in pairs:
-        num = int(n[0] + n[1])
-        if 60 <= num <= 90:
+        num = int(n)
+        if 65 <= num <= 90:
             nums.append(num)
-    result = ''
-    x_count = 0
-    for x in nums:
-        if chr(x) == "X":
-            result += chr(x)
-            x_count += 1
-            if x_count == 3:
-                break
-        else:
-            result += chr(x)
-    print(f'zad 4.4: {result}')
+    return nums
+
+
+def get_all_number_pairs(arr):
+    pairs = []
+    for line in arr:
+        line_numbers = get_numbers_str_in_line(line)
+        line_pairs = [line_numbers[i - 1] + line_numbers[i] for i in range(1, len(line_numbers), 2)]
+        pairs += line_pairs
+        # if len(line_numbers) % 2 != 0:
+        #     line_numbers = line_numbers[:-1]
+        # pair = []
+        # for number in line_numbers:
+        #     if len(pair) == 0:
+        #         pair.append(number)
+        #     elif len(pair) == 1:
+        #         pair.append(number)
+        #         pairs.append(pair)
+        #         pair = []
+    return pairs
+
+
+def get_numbers_str_in_line(line):
+    line_numbers = []
+    for char in line:
+        if char.isnumeric():
+            line_numbers.append(char)
+    return line_numbers
 
 
 def can_be_palindrome(word):

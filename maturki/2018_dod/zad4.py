@@ -1,5 +1,5 @@
 def main():
-    with open("dane/przyklad1.txt") as dane1, open("dane/przyklad2.txt") as dane2:
+    with open("dane/dane1.txt") as dane1, open("dane/dane2.txt") as dane2:
         arr1 = [[int(y) for y in x.split(" ")] for x in dane1.read().strip().split("\n")]
         arr2 = [[int(y) for y in x.split(" ")] for x in dane2.read().strip().split("\n")]
     zad1(arr1, arr2)
@@ -10,10 +10,9 @@ def main():
 
 def zad1(arr1, arr2):
     result = 0
-    for line in arr1:
-        for line_2 in arr2:
-            if line[-1] == line_2[-1]:
-                result += 1
+    for i in range(len(arr1)):
+        if arr1[i][-1] == arr2[i][-1]:
+            result += 1
     print(f'zad 4.1: {result}')
 
 

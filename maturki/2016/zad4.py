@@ -38,7 +38,7 @@ def zad3(arr):
         approx_pi = calculate_pi(arr[:i + 1])
         error = abs(math.pi - approx_pi)
         result.append(error)
-    write_to_file("output-" + str(datetime.datetime.now()), result)
+    write_to_file("output-wykres.txt", result)
     print(f'zad 4.3:')
     print(f'\terror nr 1000: {round(result[999], 4)}')
     print(f'\terror nr 1700: {round(result[1699], 4)}')

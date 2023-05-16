@@ -12,6 +12,8 @@ def main():
     #     ['.', '.', '.', '.'],
     # ]
     zad1(world)
+    zad2(world)
+    zad3(world)
 
 
 def zad1(world):
@@ -20,8 +22,27 @@ def zad1(world):
 
 
 def zad2(world):
-    # TODO
-    pass
+    result = 0
+    second_world = calculate_nth_population(2, world)
+    for row in second_world:
+        for cell in row:
+            if cell == 'X':
+                result += 1
+    print(f'zad 5.2: {result}')
+
+
+def zad3(world):
+    for population in range(1, 100):
+        cell_count = 0
+        current_world = calculate_nth_population(population, world)
+        next_world = calculate_next_population(current_world)
+        if current_world == next_world:
+            for row in current_world:
+                for char in row:
+                    if char == 'X':
+                        cell_count += 1
+            print(f'zad 5.3: {population + 1}, liczba komórek: {cell_count}')
+            break
 
 
 def calculate_nth_population(n, world):
@@ -90,3 +111,7 @@ def print_world(world):
 
 if __name__ == '__main__':
     main()
+    # with open("dane/gra.txt") as dane:
+    #     world = [[y for y in x] for x in dane.read().strip().split("\n")]
+    # print_world(calculate_nth_population(50, world))
+    # print_world(calculate_nth_population(51, world))

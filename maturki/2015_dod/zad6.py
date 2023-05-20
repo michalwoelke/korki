@@ -23,6 +23,7 @@ def zad1(arr):
                 odd_sum += int(el[index])
         result.append([even_sum, odd_sum])
     print(f'Zad 1: {result}')
+    write_to_file_1('kody1.txt', result)
 
 
 def zad2(arr, kody):
@@ -30,6 +31,7 @@ def zad2(arr, kody):
     for n in arr:
         result.append([control_number(n), kody[control_number(n)]])
     print(f'Zad 2: {result}')
+    write_to_file_1('kody2.txt', result)
 
 
 def zad3(arr, kody):
@@ -37,6 +39,7 @@ def zad3(arr, kody):
     for n in arr:
         result.append(encode(n, kody))
     print(f'Zad 3: {result}')
+    write_to_file_2('kody3.txt', result)
 
 
 def control_number(number):
@@ -58,6 +61,20 @@ def encode(number, kody):
     for n in number:
         result += kody[int(n)]
     return result + kody[control_number(number)] + END
+
+
+def write_to_file_1(filename, content):
+    file = open(filename, 'w')
+    for el in content:
+        file.write(str(el[0]) + ' ' + str(el[1]) + '\n')
+    file.close()
+
+
+def write_to_file_2(filename, content):
+    file = open(filename, 'w')
+    for el in content:
+        file.write(el + '\n')
+    file.close()
 
 
 if __name__ == '__main__':
